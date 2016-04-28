@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Canalweb_PDF>
+          <version>1.0.0</version>
+      </Canalweb_PDF>
+    </modules>
+    <global>
+        <models>
+            <pdf>
+                <class>Canalweb_PDF_Model</class>
+            </pdf>
+        </models>
+    </global>
+</config>

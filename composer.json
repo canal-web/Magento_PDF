@@ -1,0 +1,14 @@
+{
+    "name": "canal-web/magento-pdf",
+    "type": "magento-module",
+    "description": "Generate pdf file for a provided url",
+    "require": {
+        "h4cc/wkhtmltopdf-i386": "0.12.3"
+    },
+    "authors":[
+      {
+            "name":"Fabio Cerqueira",
+            "email":"fabio@canal-web.fr"
+        }
+    ]
+}
