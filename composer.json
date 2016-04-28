@@ -3,7 +3,8 @@
     "type": "magento-module",
     "description": "Generate pdf file for a provided url",
     "require": {
-        "h4cc/wkhtmltopdf-i386": "0.12.3"
+        "h4cc/wkhtmltopdf-i386": "0.12.3",
+        "mikehaertl/phpwkhtmltopdf": "*"
     },
     "authors":[
       {
