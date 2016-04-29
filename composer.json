@@ -2,12 +2,6 @@
     "name": "canal-web/magento-pdf",
     "type": "magento-module",
     "description": "Generate pdf file for a provided url",
-    "repositories" : [
-        {
-            "type": "git",
-            "url": "https://github.com/mikehaertl/php-tmpfile"
-        }
-    ],
     "require": {
         "magento-hackathon/magento-composer-installer": "*",
         "h4cc/wkhtmltopdf-i386": "0.12.3",
