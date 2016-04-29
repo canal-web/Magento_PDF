@@ -1,8 +1,16 @@
 <?php
+
+use mikehaertl\wkhtmlto\Pdf;
+
 class Canalweb_PDF_Model_Pdf
 {
     /**
-     * Generate a pdf from an url and send it
+     * Define the wkhtmltopdf binary location
+     */
+    protected $binary = 'vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386';
+
+    /**
+     * Generate a pdf from an url and return  it
      * @param string $url
      * @param string $name
      */
@@ -10,8 +18,9 @@ class Canalweb_PDF_Model_Pdf
     {
 
         $pdf = new Pdf($url);
-        $name .= time() . '.pdf';
+        $pdf->binary = $this->binary;
 
+        $name .= time() . '.pdf';
         if(!$pdf->send($name)){
             Mage::log('Error generating pdf : ' . $pdf->getError());
         }
@@ -23,10 +32,12 @@ class Canalweb_PDF_Model_Pdf
      * @param string $name
      * @return string $name
      */
-    public function savePdf($pdf, $name = "pdf-")
+    public function savePdf($url, $name = "pdf-")
     {
-        $saveDir = Mage::getBaseDir('var') . '/pdf/';
         $pdf = new Pdf($url);
+        $pdf->binary = $this->binary;
+
+        $saveDir = Mage::getBaseDir('var') . '/pdf/';
         $name .= time() . '.pdf';
 
         if(!$pdf->saveAs($saveDir . $name)){
