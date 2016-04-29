@@ -61,4 +61,18 @@ class Canalweb_PDF_Model_Pdf
         return $name;
     }
 
+    /**
+     * Delete a pdf file
+     * @param string $file
+     */
+    public function deletePdf($file)
+    {
+        $saveDir = $this->saveDir;
+        if(is_file($saveDir . $file)){
+            if(!unlink($saveDir . $file)){
+                Mage::log('Error deleting pdf');
+            }
+        }
+    }
+
 }
