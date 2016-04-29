@@ -10,6 +10,20 @@ class Canalweb_PDF_Model_Pdf
     protected $binary = 'vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386';
 
     /**
+     * Location of the saved pdf files
+     */
+    protected $saveDir;
+
+    public function __construct()
+    {
+        // You may define here the saved files location
+        $this->saveDir = Mage::getBaseDir('var') . '/pdf/';
+        if(!is_dir($this->saveDir)){
+            mkdir($this->saveDir);
+        }
+    }
+
+    /**
      * Generate a pdf from an url and return  it
      * @param string $url
      * @param string $name
@@ -37,7 +51,7 @@ class Canalweb_PDF_Model_Pdf
         $pdf = new Pdf($url);
         $pdf->binary = $this->binary;
 
-        $saveDir = Mage::getBaseDir('var') . '/pdf/';
+        $saveDir = $this->saveDir;
         $name .= time() . '.pdf';
 
         if(!$pdf->saveAs($saveDir . $name)){
