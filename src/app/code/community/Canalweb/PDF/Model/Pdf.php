@@ -11,8 +11,15 @@ class Canalweb_PDF_Model_Pdf
 
     /**
      * Location of the saved pdf files
+     * @param string $saveDir
      */
     protected $saveDir;
+
+    /**
+     * Array of options
+     * @param array $options
+     */
+    protected $options = array();
 
     public function __construct()
     {
@@ -20,6 +27,11 @@ class Canalweb_PDF_Model_Pdf
         $this->saveDir = Mage::getBaseDir('var') . '/pdf/';
         if(!is_dir($this->saveDir)){
             mkdir($this->saveDir);
+        }
+        // Add a custom css file if it exists
+        $theme = Mage::getDesign()->getSkinBaseDir();
+        if(is_file($theme . '/css/pdf.css')){
+            $this->options['user-style-sheet'] = $theme . '/css/pdf.css';
         }
     }
 
@@ -31,7 +43,8 @@ class Canalweb_PDF_Model_Pdf
     public function generatePdf($url,  $name = "pdf-")
     {
 
-        $pdf = new Pdf($url);
+        $pdf = new Pdf($this->options);
+        $pdf->addPage($url);
         $pdf->binary = $this->binary;
 
         $name .= time() . '.pdf';
@@ -48,7 +61,8 @@ class Canalweb_PDF_Model_Pdf
      */
     public function savePdf($url, $name = "pdf-")
     {
-        $pdf = new Pdf($url);
+        $pdf = new Pdf($this->options);
+        $pdf->addPage($url);
         $pdf->binary = $this->binary;
 
         $saveDir = $this->saveDir;
