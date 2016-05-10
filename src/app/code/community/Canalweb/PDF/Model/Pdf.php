@@ -7,7 +7,7 @@ class Canalweb_PDF_Model_Pdf
     /**
      * Define the wkhtmltopdf binary location
      */
-    protected $binary = 'vendor/h4cc/wkhtmltopdf-i386/bin/wkhtmltopdf-i386';
+    protected $binary = 'vendor/bin/wkhtmltopdf-amd64';
 
     /**
      * Location of the saved pdf files
