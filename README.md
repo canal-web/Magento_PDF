@@ -31,4 +31,4 @@ Mage::getModel('canalweb_pdf/pdf')->deletePdf('pdf-name.pdf');
 ```
 ## Customize rendered PDF
 
-Add a `pdf.css` file the css folder of your magento theme. E.g. `skin/frontend/myTheme/default/css/pdf.css`
+Add a `pdf.css` file in  the css folder of your magento theme. E.g. `skin/frontend/myTheme/default/css/pdf.css`
