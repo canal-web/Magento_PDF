@@ -29,7 +29,9 @@ class Canalweb_PDF_Model_Pdf
             mkdir($this->saveDir);
         }
         // Add a custom css file if it exists
-        $theme = Mage::getDesign()->getSkinBaseDir();
+        $storeId =  Mage::app()->getDefaultStoreView()->getStoreId();
+        $themeOptions = array('_package' => Mage::getStoreConfig('design/package/name', $storeId));
+        $theme = Mage::getDesign()->getSkinBaseDir($themeOptions);
         if(is_file($theme . '/css/pdf.css')){
             $this->options['user-style-sheet'] = $theme . '/css/pdf.css';
         }
